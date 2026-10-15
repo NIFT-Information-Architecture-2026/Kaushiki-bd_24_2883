@@ -1,0 +1,768 @@
+/* ==========================================================================
+   Component Styling - Work-Study-Life Sanctuary
+   Phase 5 Specifications & User Wireframes
+   ========================================================================== */
+
+/* Top Header Bar */
+.top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 20px 12px;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-app);
+  z-index: 20;
+  transition: var(--transition-smooth);
+}
+
+.header-icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  transition: var(--transition-smooth);
+}
+
+.header-icon-btn:hover {
+  background-color: var(--border-subtle);
+}
+
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  background-color: var(--border-subtle);
+  border: 1.5px solid var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+/* Week Date Slider */
+.week-slider-container {
+  margin: 12px 20px 20px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+}
+
+.month-badge-pill {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.month-badge-pill span {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 4px 12px;
+  background-color: var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+
+.week-days-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+}
+
+.day-pill-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  padding: 6px 2px;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-smooth);
+}
+
+.day-pill-item .day-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.day-pill-item .day-number {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  border-radius: var(--radius-full);
+  transition: var(--transition-smooth);
+}
+
+.day-pill-item.active .day-number {
+  background-color: var(--accent-day);
+  color: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+body.theme-night .day-pill-item.active .day-number {
+  background-color: var(--accent-glow-night);
+  color: #181412;
+}
+
+/* Agenda Task Cards & 2-Step Completion */
+.agenda-section {
+  padding: 0 20px 24px;
+}
+
+.task-item-card {
+  display: flex;
+  align-items: stretch;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.task-item-card:hover {
+  border-color: var(--border-hover);
+}
+
+.task-time-col {
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px dashed var(--border-subtle);
+  min-width: 84px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.task-content-col {
+  flex: 1;
+  padding: 16px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-title-text {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+}
+
+/* 2-Step Checkmark Box */
+.task-tick-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border-hover);
+  background-color: transparent;
+  display: none; /* hidden until task clicked */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+  margin-left: 12px;
+  flex-shrink: 0;
+}
+
+.task-item-card.show-tick .task-tick-btn {
+  display: flex;
+  animation: popIn 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.task-tick-btn:hover {
+  background-color: var(--border-subtle);
+}
+
+/* Completed Task State (Light Grey) */
+.task-item-card.is-done {
+  background-color: var(--surface-completed) !important;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.task-item-card.is-done .task-title-text {
+  text-decoration: line-through;
+  color: var(--text-completed);
+}
+
+.task-item-card.is-done .task-tick-btn {
+  display: flex;
+  background-color: var(--text-completed);
+  border-color: var(--text-completed);
+  color: #FFFFFF;
+}
+
+/* Full Width "WIND UP THE DAY." Button */
+.btn-wind-up {
+  width: 100%;
+  padding: 16px 20px;
+  background-color: var(--accent-day);
+  color: #FFFFFF;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: var(--transition-smooth);
+  margin-top: 10px;
+  margin-bottom: 24px;
+}
+
+.btn-wind-up:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+}
+
+body.theme-night .btn-wind-up {
+  background-color: var(--accent-glow-night);
+  color: #181412;
+}
+
+/* Calendar Screen Specifics */
+.calendar-month-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 24px;
+  margin-bottom: 12px;
+}
+
+.month-nav-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--text-primary);
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+}
+
+.month-nav-btn:hover {
+  background-color: var(--border-subtle);
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.calendar-weekday-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  padding-bottom: 8px;
+}
+
+.calendar-day-cell {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  color: var(--text-primary);
+  position: relative;
+}
+
+.calendar-day-cell:hover:not(.empty) {
+  background-color: var(--border-subtle);
+}
+
+.calendar-day-cell.today {
+  border: 2px solid var(--accent-day);
+  font-weight: 700;
+}
+
+.calendar-day-cell.has-milestone {
+  background-color: var(--surface-card);
+  box-shadow: 0 0 0 1.5px var(--accent-glow-night);
+}
+
+.calendar-day-cell.selected {
+  background-color: var(--accent-day) !important;
+  color: #FFFFFF !important;
+}
+
+/* "Mark a date (+)" Component */
+.mark-date-bar {
+  margin: 18px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background-color: var(--surface-card);
+  border: 1px dashed var(--border-hover);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.mark-date-bar:hover {
+  border-color: var(--accent-day);
+  background-color: var(--border-subtle);
+}
+
+.event-feed-list {
+  padding: 0 20px 24px;
+}
+
+.event-card-item {
+  display: flex;
+  align-items: stretch;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 10px;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+
+.event-date-col {
+  padding: 14px 16px;
+  background-color: var(--border-subtle);
+  min-width: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.event-date-col .day-name {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.event-date-col .day-num {
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.event-info-col {
+  flex: 1;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Good Things Jar Screen */
+.jar-canvas-container {
+  padding: 0 20px 24px;
+}
+
+.sticky-note-editor {
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  margin-bottom: 18px;
+  transition: var(--transition-smooth);
+  position: relative;
+}
+
+.sticky-input-heading {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-editorial);
+  font-size: 18px;
+  font-weight: 700;
+  color: #1C1917;
+  outline: none;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 12px;
+}
+
+.sticky-input-body {
+  width: 100%;
+  border: none;
+  background: transparent;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  line-height: 1.6;
+  color: #1C1917;
+  outline: none;
+  resize: none;
+  min-height: 110px;
+}
+
+.mood-selector-bar {
+  margin-bottom: 20px;
+}
+
+.mood-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.mood-pill-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  background-color: var(--surface-card);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+}
+
+.mood-pill-btn .color-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+}
+
+.mood-pill-btn.active {
+  border-color: var(--text-primary);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Glass Jar Illustration Visual Container */
+.jar-visual-stage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 16px 0 24px;
+}
+
+.glass-jar-svg-container {
+  width: 130px;
+  height: 160px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Journal Screen Specifics */
+.journal-segmented-control {
+  display: flex;
+  padding: 4px;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  margin: 0 20px 20px;
+}
+
+.segment-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 12px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.segment-btn.active {
+  background-color: var(--accent-day);
+  color: #FFFFFF;
+}
+
+body.theme-night .segment-btn.active {
+  background-color: var(--accent-glow-night);
+  color: #181412;
+}
+
+.journal-list-view {
+  padding: 0 20px 30px;
+}
+
+.journal-entry-card {
+  display: flex;
+  background-color: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 12px;
+  padding: 14px;
+  gap: 14px;
+  box-shadow: var(--shadow-card);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.journal-entry-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.journal-date-badge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 54px;
+  padding: 8px;
+  background-color: var(--border-subtle);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.journal-content-preview {
+  flex: 1;
+}
+
+.journal-entry-title {
+  font-family: var(--font-editorial);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.journal-entry-text {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.journal-media-thumb {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+  background-color: var(--border-subtle);
+}
+
+/* Floating Action Button (Pencil Add Journal) */
+.fab-pencil-btn {
+  position: fixed;
+  bottom: 84px;
+  right: calc(50% - 210px);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-day);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition-smooth);
+  z-index: 40;
+}
+
+@media (max-width: 480px) {
+  .fab-pencil-btn {
+    right: 20px;
+  }
+}
+
+.fab-pencil-btn:hover {
+  transform: scale(1.08);
+}
+
+body.theme-night .fab-pencil-btn {
+  background-color: var(--accent-glow-night);
+  color: #181412;
+}
+
+/* Universal Bottom Navigation Dock */
+.bottom-dock-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 10px 16px 14px;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.dock-inner-container {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 460px;
+  background: var(--dock-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--dock-border);
+  border-radius: 28px;
+  box-shadow: var(--shadow-dock);
+  padding: 6px 10px;
+  transition: var(--transition-smooth);
+}
+
+.dock-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  color: var(--text-secondary);
+  border-radius: var(--radius-md);
+  transition: var(--transition-smooth);
+  flex: 1;
+}
+
+.dock-nav-item:hover {
+  color: var(--text-primary);
+}
+
+.dock-nav-item.active {
+  color: var(--accent-day);
+}
+
+body.theme-night .dock-nav-item.active {
+  color: var(--accent-glow-night);
+}
+
+.dock-nav-label {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 3px;
+  letter-spacing: 0.02em;
+}
+
+/* Elevated Center (+) Add Button */
+.dock-elevated-add-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: var(--radius-full);
+  background-color: var(--accent-day);
+  color: #FFFFFF;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  margin-top: -18px;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+}
+
+.dock-elevated-add-btn:hover {
+  transform: scale(1.08) translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+body.theme-night .dock-elevated-add-btn {
+  background-color: var(--accent-glow-night);
+  color: #181412;
+}
+
+/* Modal Bottom Sheets / Dialogs */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: none;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.modal-overlay.open {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-sheet-content {
+  background-color: var(--surface-card);
+  width: 100%;
+  max-width: 480px;
+  border-radius: 24px 24px 0 0;
+  padding: 24px 20px 32px;
+  box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.2);
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-overlay.open .modal-sheet-content {
+  transform: translateY(0);
+}
+
+.modal-sheet-handle {
+  width: 40px;
+  height: 4px;
+  background-color: var(--border-hover);
+  border-radius: var(--radius-full);
+  margin: 0 auto 18px;
+}
+
+/* Animation Keyframes */
+@keyframes popIn {
+  0% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes dropNote {
+  0% { transform: translateY(-40px) scale(0.8); opacity: 0; }
+  60% { transform: translateY(10px) scale(1.05); }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}

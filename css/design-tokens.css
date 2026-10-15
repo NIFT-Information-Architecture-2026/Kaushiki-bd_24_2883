@@ -1,0 +1,65 @@
+/* ==========================================================================
+   Design Tokens - Work-Study-Life Sanctuary
+   Phase 5 Specifications (DESIGN_SYSTEM.md)
+   ========================================================================== */
+
+:root {
+  /* Daytime Mode (Minimalist & Sleek) */
+  --bg-app: #FAF9F6;
+  --surface-card: #FFFFFF;
+  --surface-completed: #EAEAE7;
+  --border-subtle: #E2E1DD;
+  --border-hover: #C5C3BD;
+  --text-primary: #1C1917;
+  --text-secondary: #78716C;
+  --text-completed: #A8A29E;
+  --accent-day: #1C1917;
+  --dock-bg: rgba(255, 255, 255, 0.88);
+  --dock-border: rgba(226, 225, 221, 0.8);
+  --shadow-card: 0 2px 10px rgba(28, 25, 23, 0.04);
+  --shadow-dock: 0 -4px 24px rgba(28, 25, 23, 0.08);
+
+  /* The 5 Mood Sticky Note Pastel Tokens (Customizable Defaults) */
+  --mood-happy: #FDF1BA;      /* Soft Buttercup Yellow */
+  --mood-thankful: #E8DCF4;   /* Muted Lavender Purple */
+  --mood-angry: #D2E7D6;      /* Pastel Sage Green (Updated) */
+  --mood-lonely: #FAD4DF;     /* Blossom Rose Pink */
+  --mood-sad: #D6E6F8;        /* Powder Blue */
+
+  /* Night Sanctuary Mode Tokens (Cozy Warm Coffee Shop) */
+  --bg-app-night: #181412;
+  --surface-card-night: #231C18;
+  --surface-completed-night: #2D241F;
+  --border-night: #382C24;
+  --border-hover-night: #503E33;
+  --text-primary-night: #F7EFE9;
+  --text-secondary-night: #A8988E;
+  --text-completed-night: #6B5E55;
+  --accent-glow-night: #E0A96D;
+  --dock-bg-night: rgba(35, 28, 24, 0.9);
+  --dock-border-night: rgba(56, 44, 36, 0.8);
+  --shadow-dock-night: 0 -4px 30px rgba(0, 0, 0, 0.4);
+
+  /* Radii & Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-full: 9999px;
+  --transition-smooth: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Night Mode Class Active State */
+body.theme-night {
+  --bg-app: var(--bg-app-night);
+  --surface-card: var(--surface-card-night);
+  --surface-completed: var(--surface-completed-night);
+  --border-subtle: var(--border-night);
+  --border-hover: var(--border-hover-night);
+  --text-primary: var(--text-primary-night);
+  --text-secondary: var(--text-secondary-night);
+  --text-completed: var(--text-completed-night);
+  --accent-day: var(--accent-glow-night);
+  --dock-bg: var(--dock-bg-night);
+  --dock-border: var(--dock-border-night);
+  --shadow-dock: var(--shadow-dock-night);
+}

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Sanctuary — Work, Study & Life</title>
+  <meta name="description" content="A mindful web sanctuary for work, study, habits, and evening gratitude.">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/design-tokens.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- App Viewport Container (Centered Planner Frame on Desktop) -->
+  <main id="app-viewport">
+
+    <!-- ======================================================================
+         SCREEN 1: MAIN PAGE (Home Dashboard)
+         ====================================================================== -->
+    <section id="screen-home" class="screen-view active">
+      <!-- Top Header -->
+      <header class="top-header">
+        <div>
+          <h1 class="heading-display">Hi, Kaushiki</h1>
+          <p id="dynamic-greeting-text" class="sub-greeting">Good Afternoon!</p>
+        </div>
+        <div class="profile-avatar" title="Click to toggle Day/Night Mode">
+          <span>K</span>
+        </div>
+      </header>
+
+      <!-- October Week Date Slider -->
+      <div class="week-slider-container">
+        <div class="month-badge-pill">
+          <span>OCTOBER</span>
+        </div>
+        <div class="week-days-row">
+          <div class="day-pill-item">
+            <span class="day-name">Mon</span>
+            <span class="day-number">12</span>
+          </div>
+          <div class="day-pill-item">
+            <span class="day-name">Tue</span>
+            <span class="day-number">13</span>
+          </div>
+          <div class="day-pill-item">
+            <span class="day-name">Wed</span>
+            <span class="day-number">14</span>
+          </div>
+          <div class="day-pill-item active">
+            <span class="day-name">Thu</span>
+            <span class="day-number">15</span>
+          </div>
+          <div class="day-pill-item">
+            <span class="day-name">Fri</span>
+            <span class="day-number">16</span>
+          </div>
+          <div class="day-pill-item">
+            <span class="day-name">Sat</span>
+            <span class="day-number">17</span>
+          </div>
+          <div class="day-pill-item">
+            <span class="day-name">Sun</span>
+            <span class="day-number">18</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Daily Agenda Section -->
+      <div class="agenda-section">
+        <h2 class="date-section-header">Thursday, 15th</h2>
+        <div id="main-tasks-container">
+          <!-- Populated by js/tasks.js -->
+        </div>
+
+        <!-- Full Width "WIND UP THE DAY." Button -->
+        <button id="btn-wind-up-day" class="btn-wind-up btn-editorial">
+          WIND UP THE DAY.
+        </button>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SCREEN 2: CALENDAR PAGE
+         ====================================================================== -->
+    <section id="screen-calendar" class="screen-view">
+      <!-- Top Bar -->
+      <header class="top-header">
+        <button class="header-icon-btn btn-nav-home" title="Go Home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+        <span class="screen-title">CALENDER</span>
+        <div class="profile-avatar" title="Click to toggle Day/Night Mode">
+          <span>K</span>
+        </div>
+      </header>
+
+      <!-- Month Switcher -->
+      <div class="calendar-month-header">
+        <button id="btn-prev-month" class="month-nav-btn" aria-label="Previous Month">‹</button>
+        <span id="calendar-month-label" class="font-editorial" style="font-size: 18px; font-weight: 700; letter-spacing: 0.05em;">OCTOBER 2026</span>
+        <button id="btn-next-month" class="month-nav-btn" aria-label="Next Month">›</button>
+      </div>
+
+      <!-- 7x5 Interactive Monthly Calendar Grid -->
+      <div id="calendar-days-grid" class="calendar-grid">
+        <!-- Populated by js/calendar.js -->
+      </div>
+
+      <!-- "Mark a date (+)" Component -->
+      <div id="btn-mark-date" class="mark-date-bar">
+        <span style="font-size: 13px; font-weight: 600; color: var(--text-primary);">Mark a date</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="16"></line>
+          <line x1="8" y1="12" x2="16" y2="12"></line>
+        </svg>
+      </div>
+
+      <!-- Systematic Event Feed -->
+      <div id="calendar-events-feed" class="event-feed-list">
+        <!-- Populated by js/calendar.js -->
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SCREEN 3: SCHEDULED / PENDING PAGE
+         ====================================================================== -->
+    <section id="screen-scheduled" class="screen-view">
+      <!-- Top Bar -->
+      <header class="top-header">
+        <button class="header-icon-btn btn-nav-home" title="Go Home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+        <span class="screen-title">SCHEDULED</span>
+        <div class="profile-avatar" title="Click to toggle Day/Night Mode">
+          <span>K</span>
+        </div>
+      </header>
+
+      <!-- Date & Quick Add Pill Header -->
+      <div style="padding: 0 20px 14px;">
+        <p style="font-family: var(--font-editorial); font-size: 18px; font-weight: 600; margin-bottom: 12px;">Thrus. 15th October</p>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+          <div id="scheduled-day-pills" style="display: flex; gap: 6px; flex: 1;">
+            <div class="day-pill-item" style="border: 1px solid var(--border-subtle); padding: 4px 6px;">
+              <span class="day-name">Mon</span>
+              <span style="font-size: 12px; font-weight: 600;">12</span>
+            </div>
+            <div class="day-pill-item" style="border: 1px solid var(--border-subtle); padding: 4px 6px;">
+              <span class="day-name">Tue</span>
+              <span style="font-size: 12px; font-weight: 600;">13</span>
+            </div>
+            <div class="day-pill-item" style="border: 1px solid var(--border-subtle); padding: 4px 6px;">
+              <span class="day-name">Wed</span>
+              <span style="font-size: 12px; font-weight: 600;">14</span>
+            </div>
+            <div class="day-pill-item active" style="border: 1px solid var(--border-subtle); padding: 4px 6px;">
+              <span class="day-name">Thu</span>
+              <span style="font-size: 12px; font-weight: 600;">15</span>
+            </div>
+          </div>
+          <button id="btn-scheduled-quick-add" class="header-icon-btn" style="background-color: var(--accent-day); color: #fff; width: 36px; height: 36px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Leftover / Evening Tasks Container -->
+      <div style="padding: 0 20px;">
+        <div id="scheduled-tasks-container">
+          <!-- Populated by js/scheduled.js -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SCREEN 4: GOOD THINGS JAR ("Read Me When" System)
+         ====================================================================== -->
+    <section id="screen-jar" class="screen-view">
+      <!-- Top Bar -->
+      <header class="top-header">
+        <button class="header-icon-btn btn-nav-home" title="Go Home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+        <span class="screen-title">GOOD THINGS JAR</span>
+        <div class="profile-avatar" title="Click to toggle Day/Night Mode">
+          <span>K</span>
+        </div>
+      </header>
+
+      <div class="jar-canvas-container">
+        <!-- Date Subheader & Edit Colors Pencil -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+          <span style="font-family: var(--font-editorial); font-size: 16px; font-weight: 600;">THRUS. 15th OCT</span>
+          <button id="btn-edit-colors" class="header-icon-btn" title="Edit pastel mood colors" style="width: 32px; height: 32px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20h9"></path>
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Tactile Sticky Note Editor (Unlined, Clean Pastel Canvas) -->
+        <div id="jar-sticky-note" class="sticky-note-editor">
+          <input type="text" id="jar-input-heading" class="sticky-input-heading" placeholder="Heading (e.g. Good Presentation Day)">
+          <textarea id="jar-input-body" class="sticky-input-body" placeholder="Write your positive moment, win, or quiet gratitude here..."></textarea>
+        </div>
+
+        <!-- Mood Selector Bar ("READ ME WHEN") -->
+        <div class="mood-selector-bar">
+          <span class="form-label" style="margin-bottom: 4px;">READ ME WHEN:</span>
+          <div class="mood-pills-row">
+            <button class="mood-pill-btn active" data-mood="Happy">
+              <span class="color-dot" style="background-color: var(--mood-happy);"></span>
+              <span>Happy</span>
+            </button>
+            <button class="mood-pill-btn" data-mood="Thankful">
+              <span class="color-dot" style="background-color: var(--mood-thankful);"></span>
+              <span>Thankful</span>
+            </button>
+            <button class="mood-pill-btn" data-mood="Angry">
+              <span class="color-dot" style="background-color: var(--mood-angry);"></span>
+              <span>Angry</span>
+            </button>
+            <button class="mood-pill-btn" data-mood="Lonely">
+              <span class="color-dot" style="background-color: var(--mood-lonely);"></span>
+              <span>Lonely</span>
+            </button>
+            <button class="mood-pill-btn" data-mood="Sad">
+              <span class="color-dot" style="background-color: var(--mood-sad);"></span>
+              <span>Sad</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <button id="btn-put-to-jar" class="btn-primary-action btn-editorial" style="margin-bottom: 10px;">
+          PUT IT TO THE JAR
+        </button>
+        <button id="btn-read-from-jar" class="btn-secondary-action btn-editorial">
+          READ FROM JAR.
+        </button>
+
+        <!-- Illustrated Glass Jar Container -->
+        <div class="jar-visual-stage">
+          <div class="glass-jar-svg-container">
+            <!-- Glass Jar SVG Outline -->
+            <svg viewBox="0 0 100 130" width="100%" height="100%" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--text-primary); opacity: 0.85;">
+              <!-- Jar Lid -->
+              <rect x="30" y="4" width="40" height="8" rx="3" stroke-width="2"/>
+              <!-- Jar Neck -->
+              <path d="M35 12 L35 20 Q35 24 25 30 L16 42 Q10 50 10 65 L10 115 Q10 124 20 124 L80 124 Q90 124 90 115 L90 65 Q90 50 84 42 L75 30 Q65 24 65 20 L65 12" />
+              <!-- Glass Sheen Highlights -->
+              <path d="M18 55 Q18 112 25 116" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.4"/>
+            </svg>
+            <!-- Stack of Folded Pastel Notes -->
+            <div id="jar-notes-stack"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ======================================================================
+         SCREEN 5: MY JOURNAL (3 Dynamic Views)
+         ====================================================================== -->
+    <section id="screen-journal" class="screen-view">
+      <!-- Top Bar -->
+      <header class="top-header">
+        <button class="header-icon-btn btn-nav-home" title="Go Home">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+          </svg>
+        </button>
+        <span class="screen-title">MY JOURNAL</span>
+        <div class="profile-avatar" title="Click to toggle Day/Night Mode">
+          <span>K</span>
+        </div>
+      </header>
+
+      <!-- Segmented 3-Way View Switcher -->
+      <div class="journal-segmented-control">
+        <button class="segment-btn active" data-tab="list">List</button>
+        <button class="segment-btn" data-tab="media">Media</button>
+        <button class="segment-btn" data-tab="calendar">Calender</button>
+      </div>
+
+      <!-- View 1: List View (Page 1 — DEFAULT) -->
+      <div id="journal-view-list" class="journal-list-view">
+        <div id="journal-entries-feed">
+          <!-- Populated by js/journal.js -->
+        </div>
+      </div>
+
+      <!-- View 2: Media View (Filterable Gallery Grid) -->
+      <div id="journal-view-media" style="display: none; padding: 0 20px 30px;">
+        <div style="display: flex; gap: 8px; margin-bottom: 16px;">
+          <button class="mood-pill-btn media-filter-btn active" data-filter="All">All</button>
+          <button class="mood-pill-btn media-filter-btn" data-filter="Photo">Photo</button>
+          <button class="mood-pill-btn media-filter-btn" data-filter="Video">Videos</button>
+        </div>
+        <div id="journal-media-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;">
+          <!-- Populated by js/journal.js -->
+        </div>
+      </div>
+
+      <!-- View 3: Calendar View (Multi-month with image thumbnails) -->
+      <div id="journal-view-calendar" style="display: none; padding: 0 20px 30px;">
+        <div id="journal-calendar-months-container">
+          <!-- Populated by js/journal.js -->
+        </div>
+      </div>
+
+      <!-- Floating Action Button (Pencil Add/Edit Journal Entry) -->
+      <button id="fab-add-journal" class="fab-pencil-btn" title="Add Journal Entry">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 20h9"></path>
+          <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
+        </svg>
+      </button>
+    </section>
+
+
+    <!-- ======================================================================
+         MODALS & BOTTOM SHEETS
+         ====================================================================== -->
+
+    <!-- Modal 1: Add Task Modal Sheet -->
+    <div id="modal-add-task" class="modal-overlay">
+      <div class="modal-sheet-content">
+        <div class="modal-sheet-handle"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 class="screen-title">ADD TASK</h3>
+          <button id="btn-close-add-task" class="header-icon-btn" style="width: 32px; height: 32px;">✕</button>
+        </div>
+
+        <form id="form-add-task">
+          <div class="form-group">
+            <label class="form-label" for="input-task-title">Task Title</label>
+            <input type="text" id="input-task-title" class="form-input-text" placeholder="e.g. Clean Room" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">On (Date, Month, Year)</label>
+            <div class="form-row-flex">
+              <select id="select-task-date" class="form-select">
+                <option value="15" selected>15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+              </select>
+              <select id="select-task-month" class="form-select">
+                <option value="10" selected>OCT</option>
+                <option value="11">NOV</option>
+                <option value="12">DEC</option>
+              </select>
+              <select id="select-task-year" class="form-select">
+                <option value="2026" selected>2026</option>
+                <option value="2027">2027</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">On Time (Start to End)</label>
+            <div class="form-row-flex">
+              <input type="text" id="input-start-time" class="form-input-text" placeholder="09:00 AM" style="flex: 1;">
+              <span style="display: flex; align-items: center; color: var(--text-secondary); font-size: 12px;">to</span>
+              <input type="text" id="input-end-time" class="form-input-text" placeholder="01:00 PM" style="flex: 1;">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="check-send-notif" style="display: none;">
+              <span class="checkbox-custom">✓</span>
+              <span>Send Notification</span>
+            </label>
+            <div style="display: flex; gap: 16px; margin-left: 28px; margin-top: 6px;">
+              <label style="font-size: 13px; cursor: pointer;">
+                <input type="radio" name="notif_cadence" value="once" checked> For once
+              </label>
+              <label style="font-size: 13px; cursor: pointer;">
+                <input type="radio" name="notif_cadence" value="permanently"> Permanently
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-primary-action btn-editorial">
+            SAVE TASK
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 2: "What do you want to Read?" (Good Things Jar) -->
+    <div id="modal-read-jar" class="modal-overlay">
+      <div class="modal-sheet-content">
+        <div class="modal-sheet-handle"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 class="font-editorial" style="font-size: 18px; font-weight: 700;">What do you want to Read?</h3>
+          <button id="btn-close-read-jar" class="header-icon-btn" style="width: 32px; height: 32px;">✕</button>
+        </div>
+
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px;">
+          <label class="mood-pill-btn">
+            <input type="checkbox" class="filter-mood-checkbox" value="ALL" checked style="margin-right: 4px;"> ALL
+          </label>
+          <label class="mood-pill-btn">
+            <input type="checkbox" class="filter-mood-checkbox" value="Happy" style="margin-right: 4px;"> Happy
+          </label>
+          <label class="mood-pill-btn">
+            <input type="checkbox" class="filter-mood-checkbox" value="Thankful" style="margin-right: 4px;"> Thankful
+          </label>
+          <label class="mood-pill-btn">
+            <input type="checkbox" class="filter-mood-checkbox" value="Angry" style="margin-right: 4px;"> Angry
+          </label>
+          <label class="mood-pill-btn">
+            <input type="checkbox" class="filter-mood-checkbox" value="Lonely" style="margin-right: 4px;"> Lonely
+          </label>
+          <label class="mood-pill-btn">
+            <input type="checkbox" class="filter-mood-checkbox" value="Sad" style="margin-right: 4px;"> Sad
+          </label>
+        </div>
+
+        <div id="read-notes-feed" style="max-height: 50vh; overflow-y: auto;">
+          <!-- Populated by js/jar.js -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal 3: Edit Colors Modal -->
+    <div id="modal-edit-colors" class="modal-overlay">
+      <div class="modal-sheet-content">
+        <div class="modal-sheet-handle"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 class="screen-title">CUSTOMIZE MOOD COLORS</h3>
+          <button id="btn-close-edit-colors" class="header-icon-btn" style="width: 32px; height: 32px;">✕</button>
+        </div>
+        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 16px;">
+          Customize the pastel shade for each of your 5 moods:
+        </p>
+        <div id="color-pickers-list">
+          <!-- Populated by js/jar.js -->
+        </div>
+        <button id="btn-save-colors" class="btn-primary-action btn-editorial" onclick="document.getElementById('modal-edit-colors').classList.remove('open');">
+          DONE
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal 4: Mark A Date Modal (Calendar) -->
+    <div id="modal-mark-date" class="modal-overlay">
+      <div class="modal-sheet-content">
+        <div class="modal-sheet-handle"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 class="screen-title">MARK A DATE</h3>
+          <button class="header-icon-btn" style="width: 32px; height: 32px;" onclick="document.getElementById('modal-mark-date').classList.remove('open');">✕</button>
+        </div>
+        <form id="form-mark-date" onsubmit="event.preventDefault(); const t = document.getElementById('input-milestone-title').value; if(t){ const m = window.appState.getMilestones(); m.push({id:'m-'+Date.now(), date:'2026-10-17', dayName:'Sat', dayNum:'17', title:t}); window.appState.saveMilestones(m); document.getElementById('modal-mark-date').classList.remove('open'); window.renderCalendar(); }">
+          <div class="form-group">
+            <label class="form-label">Event / Holiday Title</label>
+            <input type="text" id="input-milestone-title" class="form-input-text" placeholder="e.g. Swati's Bday & 7th day of Dussehra" required>
+          </div>
+          <button type="submit" class="btn-primary-action btn-editorial">SAVE EVENT</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal 5: Add Journal Entry Modal -->
+    <div id="modal-add-journal" class="modal-overlay">
+      <div class="modal-sheet-content">
+        <div class="modal-sheet-handle"></div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+          <h3 class="screen-title">WRITE JOURNAL ENTRY</h3>
+          <button id="btn-close-journal-modal" class="header-icon-btn" style="width: 32px; height: 32px;">✕</button>
+        </div>
+        <form id="form-add-journal">
+          <div class="form-group">
+            <label class="form-label">Entry Title</label>
+            <input type="text" id="input-journal-title" class="form-input-text" placeholder="e.g. Quiet Saturday Coffee & Sketching" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Thoughts & Reflections</label>
+            <textarea id="input-journal-text" class="form-input-text" style="min-height: 100px; resize: none;" placeholder="What captured your attention today?"></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Optional Media Image / Video URL</label>
+            <input type="url" id="input-journal-media-url" class="form-input-text" placeholder="https://example.com/photo.jpg">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Media Type</label>
+            <select id="select-journal-media-type" class="form-select">
+              <option value="Photo">Photo</option>
+              <option value="Video">Video</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-primary-action btn-editorial">SAVE JOURNAL ENTRY</button>
+        </form>
+      </div>
+    </div>
+
+
+    <!-- ======================================================================
+         UNIVERSAL 5-TAB FLOATING BOTTOM NAVIGATION DOCK
+         ====================================================================== -->
+    <nav class="bottom-dock-nav">
+      <div class="dock-inner-container">
+        <!-- 1. Calendar -->
+        <button class="dock-nav-item" data-screen="calendar" title="Calendar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span class="dock-nav-label">Calendar</span>
+        </button>
+
+        <!-- 2. Pending / Scheduled -->
+        <button class="dock-nav-item" data-screen="scheduled" title="Pending & Scheduled">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polyline points="12 6 12 12 16 14"></polyline>
+          </svg>
+          <span class="dock-nav-label">Scheduled</span>
+        </button>
+
+        <!-- 3. Elevated Add (+) Button -->
+        <button id="dock-elevated-add" class="dock-elevated-add-btn" title="Add New Task" aria-label="Add Task">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </button>
+
+        <!-- 4. Good Things Jar -->
+        <button class="dock-nav-item" data-screen="jar" title="Good Things Jar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="7" y="2" width="10" height="3" rx="1"/>
+            <path d="M6 7 C6 5, 8 5, 9 5 L15 5 C16 5, 18 5, 18 7 L19 20 C19 21, 18 22, 17 22 L7 22 C6 22, 5 21, 5 20 Z"/>
+          </svg>
+          <span class="dock-nav-label">Jar</span>
+        </button>
+
+        <!-- 5. My Journal -->
+        <button class="dock-nav-item" data-screen="journal" title="My Journal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+          </svg>
+          <span class="dock-nav-label">Journal</span>
+        </button>
+      </div>
+    </nav>
+
+  </main>
+
+  <!-- JavaScript Modules -->
+  <script src="js/state.js"></script>
+  <script src="js/greetings.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/calendar.js"></script>
+  <script src="js/scheduled.js"></script>
+  <script src="js/add-task.js"></script>
+  <script src="js/jar.js"></script>
+  <script src="js/journal.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

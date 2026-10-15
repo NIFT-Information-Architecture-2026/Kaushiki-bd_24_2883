@@ -1,69 +1,80 @@
-# User Journey & Empathy Model: Work-Study-Life Web Sanctuary
+# Phase 2: User Journey & Wireframe Specification (Reboot)
 
 > **Project Phase:** Phase 2 — Empathy & User Experience Modeling  
-> **Core Artifact:** User Journey Map, Persona Spectrum, & System Micro-Interventions
+> **Core Focus:** Screen Flow, Good Things Jar Wireframe, & Rollover Logic  
+> **Target Platform:** Responsive Web Application
 
 ---
 
-## 1. Persona Spectrum & Lifestyle Archetypes
+## 1. Good Things Jar: 3-Step Interactive Wireframe
 
-### Archetype 1: *The Independent Young Professional*
-* **Context:** Lives independently, balances a full-time job with domestic responsibilities.
-* **Daily Reality:** Cooks for themselves 3x a day, manages household chores (laundry, cleaning, groceries) alongside professional deadlines.
-* **Core Need:** Quick meal-prep integration, chore slots embedded into work breaks, and stress-free task sequencing to avoid mid-week & Friday burnout.
+Based on the Creative Director's wireframe sketch, the **Good Things Jar** experience is structured into a seamless 3-step tactile flow:
 
-### Archetype 2: *The Design / Studio Student*
-* **Context:** NIFT or university student with irregular schedule and high project/submission loads.
-* **Daily Reality:** Juggles studio assignments, research, group work, and personal care.
-* **Core Need:** Clear morning roadmap, sequential focus lists, and an encouraging space to unwind after intense project crunches.
-
----
-
-## 2. End-to-End User Journey Map (Day-in-the-Life)
+![Good Things Jar Wireframe Sketch](/Users/kaushikisharma/.gemini/antigravity/brain/824c1a07-47a9-49e9-bf85-2c368013a10f/good_things_jar_sketch.png)
 
 ```mermaid
-timeline
-    title Daily Journey: Morning Focus to Evening Sanctuary
-    7:00 AM : Wake Up & Gentle Greeting : Inspiring quote for carry-over tasks : Morning Micro-Habit (Chia seeds)
-    8:30 AM : Quick Meal & Chore Slot : Easy meal-prep suggestion : Review sequenced targets for the day
-    10:00 AM : Deep Focus Block : Prioritized task execution : Context-switching protection
-    1:00 PM : Midday Reset : Quick lunch break : Chore check-in (e.g. laundry reminder)
-    3:30 PM : Afternoon Crunch : Sequence adjustments to prevent Friday burnout
-    7:30 PM : "Wind Down Day" Trigger : User clicks explicit toggle button : Transition to Evening Sanctuary UI
-    8:30 PM : Evening Dinner & Relaxation : Light personal time : No aggressive notifications
-    10:00 PM : Reflection & Gratitude : Daily Journal entry : Drop memory card into "Good Things Jar"
+flowchart LR
+    Page1["Page 1: Home Dashboard"] -->|"Click Good Things Jar Widget"| Page2["Page 2: Card Creation & Pastel Palette"]
+    Page2 -->|"Click ✓ Tick Button"| Page3["Page 3: The Good Things Jar View"]
+    Page3 -->|"Click Undo Button"| Page2
+    Page3 -->|"Click Home Button"| Page1
 ```
 
----
+### Detailed Screen Breakdown
 
-## 3. Micro-Interventions & Empathy Mechanics
+#### Screen 1: Dashboard Entry Point
+* **Location:** Prominent card widget on the main dashboard.
+* **Trigger:** Clicking the **Good Things Jar** widget navigates directly to the Card Creation view.
 
-### A. Gentle Rollover Presentation (Zero-Guilt UX)
-* **Concept:** When a user opens the app with 4 carry-over tasks from yesterday.
-* **UI Presentation:** 
-  * Tasks are grouped under a soft badge: *"Carried Forward for Fresh Focus"*.
-  * Discrete top-corner inspiring quote (e.g., *"Today is a fresh canvas — step by step."*).
-  * No aggressive red exclamation marks or warning badges.
+#### Screen 2: Tactile Index Card Creation
+* **Color Palette Selector:** Users can choose and customize their card colors (featuring pastel color options like **Pastel Blue**, **Pastel Pink**, **Pastel Yellow** as default presets).
+* **Card Canvas:** Styled like a tactile lined index card for typing positive moments, wins, or gratitude.
+* **Submission Action:** A prominent **✓ Tick Button** in the bottom-right corner submits the completed card into the jar.
 
-### B. Domestic Chore & Quick Meal-Prep Integration
-* **Concept:** Supporting independent young professionals who cook 3x/day and manage household chores.
-* **UI Presentation:**
-  * **Quick Meal-Prep Slots:** Optional 15-minute meal ideas / reminders embedded into the daily schedule.
-  * **Chore Anchors:** Smart scheduling of domestic tasks (e.g., laundry on the 20th rolling over seamlessly to the 21st with a 5-day advance reminder if needed).
-
-### C. The "Wind Down Day" Mode Switch
-* **Concept:** Manual mode transition from Work/Study Execution to Unwinding Sanctuary.
-* **Mechanics:**
-  * User clicks the **"Wind Down Day"** action button when *they* feel ready.
-  * Interface visually softens: Work/Study checklists blur or hide; ambient evening palette, Daily Journal, and the **Good Things Jar** take center stage.
+#### Screen 3: The Good Things Jar View
+* **Visual Presentation:** An illustrated clear glass jar visibly filled with all the earlier memory cards dropped and saved by the user over time.
+* **Header Controls:**
+  * 🏠 **Home Button (Top-Left):** Quick navigation back to the main dashboard.
+  * ↩️ **Undo Button (Top-Right):** Instant recall if the tick button was clicked by mistake.
+* **Bottom Controls:**
+  * 📖 **Read & Empty Jar:** Allows the user to unroll past notes, review memories, or clear out the jar for a fresh start.
 
 ---
 
-## 4. Emotional State Mapping
+## 2. Rollover Task Mechanics & Context-Aware Timing
 
-| Journey Stage | Primary Goal | User Emotion | Web App Response & Copy |
+```mermaid
+flowchart TD
+    A[Uncompleted Task on Day 1] --> B[Automated Midnight Rollover]
+    B --> C{When to Display?}
+    C -->|Daytime Work/Study Hours| D[Hidden/Deferred: Prevent Context-Switching & Meeting/Class Distraction]
+    C -->|Evening Hours or User Preference| E[Revealed in Evening Chores / Life List]
+    E --> F["Soft Time-Anchor Badge (e.g., 'Scheduled 5 days ago')"]
+```
+
+### Carry-Over Protocol & Timing Control
+1. **Context-Aware Display (Evening Visibility):** Rollover tasks (especially domestic chores like laundry, cleaning, groceries) stay out of sight during peak morning/afternoon study and work hours so users are not distracted during classes or meetings.
+2. **User Scheduling Preference:** The system displays rollover badges in the evening by default (or asks the user their preferred time for domestic/rollover catch-up).
+3. **Soft Time Badges:** Rather than punishing red alerts, tasks feature subtle, non-judgmental labels (e.g., *"Scheduled 5 days ago"*).
+4. **No Quote Clutter:** Clean, focused workspace without generic daily quotes.
+
+---
+
+## 3. "Wind Down Day" Manual Mode Transition
+
+* **Timing Context:** Designed for mid-evening to late night (typically around **9:00 PM** or whenever the user finishes work and is preparing for bed).
+* **100% User-Driven:** The transition from **Minimalist Sleek Day Mode** to **Cozy Coffee Shop Night Sanctuary** is triggered **strictly when the user clicks the "Wind Down Day" button**.
+* **Night Sanctuary Focus:** Work metrics, deadlines, and study lists fade away. The screen shifts into an ambient warm coffee shop sanctuary where the **Daily Journal** and **Good Things Jar** take center stage.
+* **Low-Friction Routine:** The Good Things Jar is intentionally fast and effortless (takes under 1 minute) so the user gets a satisfying close to their day without cognitive effort.
+
+---
+
+## 4. Journey Matrix: Day-to-Night Workflow
+
+| Time Anchor | User Mindset | Active Screen / Feature | UI Tone & Aesthetic |
 | :--- | :--- | :--- | :--- |
-| **Morning Launch** | Understand today's plan | Seeking order, slightly anxious | *"Good morning! Here is your clear path for today."* |
-| **Midday Work** | Execute priorities | Focused, risk of fatigue | *"1 of 3 priority tasks completed. Keep steady."* |
-| **Wind Down Trigger** | Stop working | Relieved, seeking transition | *"Great work today. Time to rest your mind."* |
-| **Night Reflection** | Unwind & express gratitude | Calm, reflective, peaceful | *"What made you smile today? Drop a note in your jar."* |
+| **Morning Launch (7–9 AM)** | Rushed, seeking top targets | **1-Minute Priority Dashboard** (High-priority study/work only; no rollover clutter) | Minimalist, high contrast, clean. |
+| **Daytime Execution (10 AM–5 PM)** | Deep focus, classes & meetings | **Work & Study Sequenced Lists** (Zero distraction from domestic chores) | Sleek, distraction-free grid. |
+| **Early Evening (6–8 PM)** | Post-work/college, home chores | **Evening Chores & Rollover Review** (Laundry, groceries, soft rollover badges appear) | Balanced, gentle domestic check-in. |
+| **Mid-Evening / Night (~9 PM / Bedtime)** | Work finished, unwinding | **Manual "Wind Down Day" Button Click** | Soft, ambient visual shift. |
+| **Night Sanctuary & Reflection** | Peaceful, gratitude before sleep | **Night Sanctuary: Good Things Jar & Tactile Paper Journal** (Quick 1-minute positive card drop) | Warm Coffee Shop glow, cozy textures, pastel index cards. |
